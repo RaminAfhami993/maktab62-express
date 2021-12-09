@@ -1,31 +1,14 @@
-const express = require('express');
+const express = require("express");
+const generalTools = require("../tools/generalTools");
 const router = express.Router();
-const path = require('path');
 const generalTools = require('../tools/generalTools')
 
-
-
-router.get('/me', function (req, res) {
-    res.send('Hello from user router')
+router.post('/info', function(req, res) {
+    if (!req.body.name || !req.body.job) {
+        return res.json({success: false, message: 'Empty Field'})
+    };
+    return res.json({...req.body, date: new Date(), id: generalTools.randomInteger(1, 1000), success: true})
 });
-
-
-router.get('/home', function (req, res) {
-    res.sendFile(path.join(__dirname, '../views/home.html'));
-});
-
-
-
-router.post('/test', function (req, res) {
-    console.log(req.body);
-    // console.log(req.myUrl);
-
-
-    res.json({ ...req.body, id: generalTools.randomInteger(1, 1000), date: new Date() })
-});
-
 
 
 module.exports = router;
-
-
