@@ -10,7 +10,13 @@ function sendData() {
             job
         }),
         success: function(response) {
-            console.log(response);
+            $('.text-danger, .text-success').text("")
+
+            if (response.success) {
+                $('.text-success').html('true')
+            } else {
+                $('.text-danger').html('false')
+            }
         },
         error: function(err) {
             console.log(err);
