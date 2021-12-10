@@ -1,7 +1,10 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const userRouter = require('./routes/user')
+const userRouter = require('./routes/user');
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.json());

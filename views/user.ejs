@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./common/head") %> 
+
+    <title>User Page</title>
+</head>
+<body>
+    <%- include("./common/navbar", {upper: user.firstName}) %> 
+
+
+    <% if (user) { %>
+        <h1> Hello <%= user.firstName + " " + user.lastName %> </h1>
+    <% } else { %>
+        <h1> user not found </h1>
+    <% } %>
+    
+</body>
+</html>
